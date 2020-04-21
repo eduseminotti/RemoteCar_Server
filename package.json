@@ -1,0 +1,24 @@
+{
+  "name": "remotecar_server",
+  "version": "1.0.0",
+  "description": "The socket server to control your robot car remotely",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eduseminotti/RemoteCar_Server.git"
+  },
+  "author": "Gustavo Marin Suppi / Eduardo Seminotti",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eduseminotti/RemoteCar_Server/issues"
+  },
+  "homepage": "https://github.com/eduseminotti/RemoteCar_Server#readme",
+  "dependencies": {
+    "serialport": "^8.0.7",
+    "socket.io": "^2.3.0"
+  }
+}
