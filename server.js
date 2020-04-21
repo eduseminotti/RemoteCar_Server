@@ -20,8 +20,12 @@ io.on('connection', socket => {
 });
 
 function move(io) {
-    io.emit('move', 'right')
-    io.emit('move', 'left')
-    io.emit('move', 'ahead')
-    io.emit('move', 'back')
+    setInterval(() => {
+        io.emit('move', 'right')
+        io.emit('move', 'left')
+        io.emit('move', 'ahead')
+        io.emit('move', 'back')
+    }, 1000)
+
+    
 }  
