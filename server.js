@@ -22,10 +22,6 @@ io.on('connection', socket => {
 function move(io) {
     setInterval(() => {
         io.emit('move', new Date().toGMTString())
-        io.emit('move', 'right')
-        io.emit('move', 'left')
-        io.emit('move', 'ahead')
-        io.emit('move', 'back')
     }, 1000)
 
     
