@@ -1,21 +1,27 @@
-var express = require('express')(),
-    app = require('http').createServer(express),
-    io = require('socket.io').listen(app),
-    fs = require('fs'),
-    url = require('url'),
-    SerialPort = require('serialport')
+var express = require('express')
+var socketIO = require('socket.io')
 
+const PORT = process.env.PORT || 3000;
+const INDEX = '/index.html';
 
-async function main() {
+const server = express()
+    .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
+    .listen(PORT, () => console.log(`Listening on ${PORT}`));
 
-    var a = await SerialPort.list()
+const io = socketIO(server)
 
-    console.log(a)
-}
+io.on('connection', socket => {
+    console.log('Client connected');
+    socket.on('disconnect', () => console.log('Client disconnected'));
 
+    socket.on('move', direction => console.log(direction))
 
-main()
+    move(io)
+});
 
-
-
-//app.listen(8000)
+function move(io) {
+    io.emit('move', 'right')
+    io.emit('move', 'left')
+    io.emit('move', 'ahead')
+    io.emit('move', 'back')
+}  
