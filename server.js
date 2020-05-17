@@ -14,15 +14,5 @@ io.on('connection', socket => {
     console.log('Client connected');
     socket.on('disconnect', () => console.log('Client disconnected'));
 
-    socket.on('move', direction => console.log(direction))
-
-    move(io)
-});
-
-function move(io) {
-    setInterval(() => {
-        io.emit('move', new Date().toGMTString())
-    }, 1000)
-
-    
-}  
+    socket.on('move', direction => io.emit('move:car', direction))
+});  
